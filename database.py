@@ -1,0 +1,13 @@
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+SQL_ALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
+#"postgresql://user:password@postgresserver/db" #this is the url for the database
+
+engine = create_engine(SQL_ALCHEMY_DATABASE_URL,connect_args={"check_same_thread": False}) #create a database connection
+
+SessionLocal = sessionmaker(autocommit = False, autoflush = False, bind = engine) #each instance of this class is to create a database session
+
+Base = declarative_base()
+
