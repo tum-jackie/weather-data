@@ -1,9 +1,8 @@
-#defining schema for our datatabase
+# defining schema for our datatabase
 from database import Base
 from sqlalchemy import Column, Integer, String, DateTime, Float
 from sqlalchemy.sql import func
 from pydantic import BaseModel
-
 
 
 class Weather(Base):
@@ -16,9 +15,10 @@ class Weather(Base):
     pressure = Column(Float)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
+
 class WeatherData(BaseModel):
-    latitude : float
-    longitude:float
+    latitude: float
+    longitude: float
     temperature: float
     humidity: float
     pressure: float
